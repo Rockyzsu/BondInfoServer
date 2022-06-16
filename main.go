@@ -11,12 +11,13 @@ package main
 
 import (
 	"bondinfoserver/router"
-	"log"
-
+	"bondinfoserver/service"
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
+	"log"
 )
 
 func main() {
 	routerObj := router.Router()
-	log.Fatalln(routerObj.Run("127.0.0.1:8080"))
+	log.Fatalln(routerObj.Run(fmt.Sprintf("0.0.0.0:%d", service.Port)))
 }

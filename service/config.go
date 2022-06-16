@@ -22,6 +22,8 @@ type MysqlDB struct {
 	Host     string
 	Port     int
 	Db       string
+	HttpPort int
+	Key      string
 }
 
 func JsonParse(filename string) (MysqlDB, error) {
@@ -39,7 +41,10 @@ func JsonParse(filename string) (MysqlDB, error) {
 	return v, nil
 }
 
+//全局
 var DB *sql.DB
+var Port int
+var Key string
 
 func init() {
 	//json读取数据
@@ -50,6 +55,8 @@ func init() {
 		log.Fatalln("请创建server/config.json 配置文件")
 	}
 	DB = conf.InitDB()
+	Port = conf.HttpPort
+	Key = conf.Key
 }
 
 func (this *MysqlDB) InitDB() *sql.DB {

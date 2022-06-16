@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"bondinfoserver/model"
 	"bondinfoserver/service"
 	"fmt"
 	"net/http"
@@ -19,7 +20,16 @@ func BondBaseInfo(ctx *gin.Context) {
 
 	if ctx.Request.Method == "POST" {
 
-		sign := ctx.PostForm("sign")
+		sign := ctx.PostForm("sign") //鉴权使用
+		if sign != service.Key {
+			ctx.JSON(http.StatusBadRequest, gin.H{
+				"code": -1,
+				"msg":  "sign error",
+				"data": []model.Bondinfo{},
+			})
+			return
+		}
+
 		fmt.Println("current is ", sign)
 
 		args := ctx.PostForm("args")
@@ -33,7 +43,7 @@ func BondBaseInfo(ctx *gin.Context) {
 
 		ctx.JSON(http.StatusOK, gin.H{
 			"code": 0,
-			"res":  "",
+			"msg":  "",
 			"data": bondList,
 		})
 	}
