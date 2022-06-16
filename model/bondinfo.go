@@ -1,24 +1,16 @@
 package model
 
-type History struct {
-	Id        int    `json:"Id"`
-	Url       string `json:"Url"`
-	Updated   string `json:"Updated"`
-	IsDeleted bool   `json:"isDeleted"`
-}
-
-type ContentText struct {
-	Id      int    `json:"id"`
-	Text    string `json:"text"`
-	Updated string `json:"updated"`
-}
-
 type Bondinfo struct {
-	Code       string `json:"code"`
-	Name       string `json:"name"`
-	Price      string `json:"price"`
-	PremiumRT  string `json:"premium_rt"`   // 溢价率
-	RedeemIcon string `json:"redeem_icon"`  // 强赎标志
-	CurrIssAmt string `json:"curr_iss_amt"` // 剩余规模
-
+	Code             string `json:"code"`
+	Name             string `json:"name"`
+	Price            string `json:"price"`
+	PremiumRT        string `json:"premium_rt"`   // 溢价率
+	RedeemIcon       string `json:"redeem_icon"`  // 强赎标志
+	CurrIssAmt       string `json:"curr_iss_amt"` // 剩余规模
+	ZgPrice          string `json:"zg_price"`
+	ConvertPrice     string `json:"convert_price"`
+	Deadline         string `json:"dead_line"`
+	Volume           string `json:"volume"`
+	Rating           string `json:"rating"`
+	ConvertStartDate string `json:"convert_start_date"`
 }

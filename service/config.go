@@ -11,51 +11,10 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 	"io/ioutil"
 	"log"
-	"os"
-
-	_ "github.com/go-sql-driver/mysql"
 )
-
-type UserInfo struct {
-	accessKey string
-	secretKey string
-	bucket    string
-	space     string
-}
-
-type TencentUserInfo struct {
-	AccessKey string
-	SecretKey string
-	Host      []string
-}
-
-func NewTencentUserInfo() *TencentUserInfo {
-	//print("space name")
-	//print(os.Getenv("qiniu_space"))
-	host := os.Getenv("tencent_host")
-	http_host := fmt.Sprintf("https://%s", host)
-	https_host := fmt.Sprintf("https://www.%s", host)
-	return &TencentUserInfo{
-		AccessKey: os.Getenv("tencent_access_key"),
-		SecretKey: os.Getenv("tencent_secret_key"),
-		Host:      []string{http_host, https_host},
-	}
-}
-
-const SOURCE = "webupload"
-
-func NewUserInfo() *UserInfo {
-	//print("space name")
-	//print(os.Getenv("qiniu_space"))
-	return &UserInfo{
-		accessKey: os.Getenv("qiniu_access_key"),
-		secretKey: os.Getenv("qiniu_secret_key"),
-		bucket:    os.Getenv("qiniu_bucket"),
-		space:     os.Getenv("qiniu_space"),
-	}
-}
 
 type MysqlDB struct {
 	Username string
@@ -98,7 +57,6 @@ func (this *MysqlDB) InitDB() *sql.DB {
 	conn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?loc=Local",
 		this.Username, this.Password,
 		this.Host, this.Port, this.Db)
-	log.Println(conn)
 	db, err := sql.Open("mysql", conn)
 	if err != nil {
 		log.Fatalln(err)
