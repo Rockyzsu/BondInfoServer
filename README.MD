@@ -1,7 +1,7 @@
 # 基于Gin的http接口服务，提供可转债基础和扩展数据给Ptrade
 
 
-![公众号](https://pic.kaihu51.com/unixpicgo/1637491733938.jpg)
+![公众号](https://pic.kaihu51.com/unixpicgo/16374917339381.jpg)
 ----
 ## API
 ```
