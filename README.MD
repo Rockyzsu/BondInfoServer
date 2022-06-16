@@ -1,13 +1,13 @@
 # 基于Gin的http接口服务，提供可转债基础和扩展数据给Ptrade
 
 
-[公众号](http://xximg.30daydo.com/webupload/ZSXQ_20220616_181142268.png)
+![公众号](https://pic.kaihu51.com/unixpicgo/1637491733938.jpg)
 ----
 ## API
 ```
 POST /bondinfo
 {
-    "sign":"id"
+    "sign":"xxxxx"
 }
 
 ```
