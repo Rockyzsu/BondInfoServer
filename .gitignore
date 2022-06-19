@@ -160,3 +160,4 @@ upload/
 *.png
 *.jpg
 *.sh
+*.json

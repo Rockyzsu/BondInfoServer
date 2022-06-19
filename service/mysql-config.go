@@ -44,19 +44,17 @@ func JsonParse(filename string) (MysqlDB, error) {
 //全局
 var DB *sql.DB
 var Port int
-var Key string
 
 func init() {
 	//json读取数据
 	//v := MysqlDB{}
 	// 外部的读取的时候，当前目录是根目录，所以需要完整的路径
-	conf, err := JsonParse("service/config.json")
+	conf, err := JsonParse("service/mysql.json")
 	if err != nil {
-		log.Fatalln("请创建server/config.json 配置文件")
+		log.Fatalln("请创建server/mysql.json 配置文件")
 	}
 	DB = conf.InitDB()
 	Port = conf.HttpPort
-	Key = conf.Key
 }
 
 func (this *MysqlDB) InitDB() *sql.DB {
